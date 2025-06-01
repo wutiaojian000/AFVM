@@ -6,7 +6,7 @@ ARCH_DIR = ./src/arch/AMD-V
 INCLUDE_DIR = ./include/
 
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -g
 SOURCES = $(wildcard $(SOURCE_DIR)/*.c)
 # SOURCES += $(wildcard $(ARCH_DIR)/*.c)
 INCLUDE = -I$(INCLUDE_DIR)
@@ -15,7 +15,7 @@ TARGET = light-qemu
 
 $(TARGET):$(OBJ)
 	@mkdir -p output
-	$(CC) -m32 $(OBJ) -o output/$(TARGET).$(VERSION)
+	$(CC) -m32 $(CFLAGS) $(OBJ) -o output/$(TARGET).$(VERSION)
 	@rm -rf $(OBJ)
 
 %.o:%.c
